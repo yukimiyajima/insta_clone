@@ -4,5 +4,8 @@
   <%= form.hidden_field :content %>
   <p>タイトル:<%= @blog.title %></p>
   <p>本文:<%= @blog.content %></p>
+  <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.submit "投稿する" %>
   <%= form.submit  "登録する" %>
 <% end %>

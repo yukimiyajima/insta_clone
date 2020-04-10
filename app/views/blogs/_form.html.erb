@@ -17,6 +17,9 @@
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
+  <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
   <%= form.submit %>
 <% end %>
 <%= link_to "ブログ一覧画面にもどる", blogs_path %>
