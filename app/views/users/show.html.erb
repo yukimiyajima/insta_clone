@@ -1,2 +1,20 @@
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>内容</th>
+    <th>画像</th>
+  </tr>
+<% @user.blogs.each do |feed| %>
+  <tr>
+    <td><%= feed.title %></td>
+    <td><%= feed.content %></td>
+    <td><%= image_tag feed.image.url %></td>
+    <td><%= link_to '詳細確認', blog_path(feed.id) %></td>
+    <td><%= link_to "投稿編集", edit_blog_path(feed.id), data: { confirm: '本当に編集していいですか？' } %></td>
+    <td><%= link_to '投稿削除', blog_path(feed.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to '新しく投稿する', new_blog_path %>

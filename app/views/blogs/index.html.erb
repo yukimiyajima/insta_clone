@@ -1,4 +1,4 @@
-<h1>ブログ一覧</h1>
+<h1>投稿一覧</h1>
 <p><%= notice %></p>
 <table>
 <table>
@@ -11,10 +11,10 @@
     <td><%= blog.title %></td>
     <td><%= blog.content %></td>
     <td><%= image_tag blog.image.url %></td>
-    <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
-    <td><%= link_to "ブログを編集する", edit_blog_path(blog.id), data: { confirm: '本当に編集していいですか？' } %></td>
-    <td><%= link_to 'ブログを削除する', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+    <td><%= link_to '詳細確認', blog_path(blog.id) %></td>
+    <td><%= link_to "投稿編集", edit_blog_path(blog.id), data: { confirm: '本当に編集していいですか？' } %></td>
+    <td><%= link_to '投稿削除', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
   </tr>
 <% end %>
 </table>
-<%= link_to '新しくブログを投稿する', new_blog_path %>
+<%= link_to '新しく投稿する', new_blog_path %>

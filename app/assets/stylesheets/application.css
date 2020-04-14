@@ -19,15 +19,22 @@
   display: flex;
   flex-flow: column;
   min-height: 100vh;
+  background: -moz-linear-gradient(left, #D400A7, rgba(253, 145, 21, 0.835));
+  background: -webkit-linear-gradient(left, #D400A7, rgba(253, 145, 21, 0.835));
+  background: linear-gradient(to right, #D400A7, rgba(253, 145, 21, 0.835));
 }
+
+/* rgba(236, 217, 44, 0.835 */
+
 header{
- background-color: #03a9f4;
+ background-color: #D400A7;
  height: 60px;
+ text-align: center;
 }
 main{
    flex: 1;
  }
 footer {
  height: 60px;
- background-color:#03a9f4;
+ background-color:#D400A7;
  }
