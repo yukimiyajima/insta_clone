@@ -1,5 +1,7 @@
 <h1>投稿詳細画面</h1>
+<% if @blog.image? %>
 <p><%= image_tag @blog.image.url %></p>
+<% end %>
 <p>タイトル: <%= @blog.title %></p>
 <p>内容: <%= @blog.content %></p>
 <% unless @blog.user_id == current_user.id %>

@@ -26,7 +26,8 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-end
+  gem 'letter_opener_web'
+end 
 
 group :test do
   gem 'capybara', '>= 2.15'
