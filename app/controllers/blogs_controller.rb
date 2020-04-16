@@ -62,7 +62,7 @@ class BlogsController < ApplicationController
   def ensure_correct_user
     if current_user.id != @blog.user.id
       flash[:notice] = "編集権限がありません"
-      redirect_to feeds_path
+      redirect_to blogs_path
     end
   end
   end
