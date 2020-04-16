@@ -3,11 +3,13 @@
 <table>
 <table>
   <tr>
+    <th>ユーザー名</th>
     <th>タイトル</th>
     <th>内容</th>
   </tr>
 <% @blogs.each do |blog| %>
   <tr>
+    <td><%= blog.user.name %></td>
     <td><%= blog.title %></td>
     <td><%= blog.content %></td>
     <% if blog.image? %>
