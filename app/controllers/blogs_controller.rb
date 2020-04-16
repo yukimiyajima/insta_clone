@@ -1,5 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_user, {only: [:show, :edit, :update]}
+
   def index
     @blogs = Blog.all
   end
@@ -20,8 +22,8 @@ class BlogsController < ApplicationController
     if params[:back]
       render :new
     elsif @blog.save
-      BlogMailer.blog_mail(@blog).deliver
-      redirect_to blogs_path, notice: "ブログを作成しました！"
+      # BlogMailer.blog_mail(@blog).deliver
+      redirect_to blogs_path, notice: "投稿しました！"
     else
       render :new
     end
@@ -39,7 +41,7 @@ class BlogsController < ApplicationController
   def update
     @blog = Blog.find(params[:id]) 
     if @blog.update(blog_params)
-      redirect_to blogs_path, notice: "ブログを編集しました！"
+      redirect_to blogs_path, notice: "投稿を編集しました！"
     else
       render :edit
     end
@@ -47,7 +49,7 @@ class BlogsController < ApplicationController
 
   def destroy
     @blog.destroy
-    redirect_to blogs_path, notice:"ブログを削除しました！"
+    redirect_to blogs_path, notice:"投稿を削除しました！"
   end
 
   private
@@ -56,5 +58,11 @@ class BlogsController < ApplicationController
   end
   def set_blog
     @blog = Blog.find(params[:id])
+  end
+  def ensure_correct_user
+    if current_user.id != @blog.user.id
+      flash[:notice] = "編集権限がありません"
+      redirect_to feeds_path
+    end
   end
   end
